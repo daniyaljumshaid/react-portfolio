@@ -14,9 +14,6 @@ export default function Contact() {
             <h5>Email:</h5>
             <p>daniyaljumshaid74@gmail.com</p>
 
-            <h5>Phone:</h5>
-            <p>+92 330-4795104</p>
-
             <h5>GitHub:</h5>
             <p><a href="https://github.com/daniyaljumshaid" target="_blank" rel="noopener noreferrer">Daniyal Jumshaid</a></p>
 

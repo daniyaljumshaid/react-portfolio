@@ -31,7 +31,7 @@ export default function About() {
             clean and user-friendly web applications.
 
             <h3>Educational Background:</h3>
-             I'm currently studying BSCS at UET Lahore.I have developed skils in HTML,CSS,Bootstrap,JS and React JS.I have experience working on several academic and personal projects in both C++ and JavaScript, which helped strengthen my fundamentals in programming and frontend development.
+             I'm currently studying BSCS at UET Lahore.I have developed skils in HTML,CSS,Bootstrap,JS and React JS.I have experience working on several academic and personal projects in both C++ and JavaScript which helped strengthen my fundamentals in programming and frontend development.
           </p>
           <p>
            <h3>Goals:</h3>
