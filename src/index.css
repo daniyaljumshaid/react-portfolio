@@ -1,0 +1,478 @@
+/* HCI Portfolio - Enhanced Accessibility & Usability Styles */
+
+/* ========================================
+   1. CSS Variables for Consistency
+   ======================================== */
+:root {
+  --primary-color: #0dcaf0;
+  --primary-dark: #0aa2c0;
+  --success-color: #198754;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --dark-bg: #0f2027;
+  --dark-gradient: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  --text-light: rgba(255, 255, 255, 0.9);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --focus-ring: 0 0 0 3px rgba(13, 202, 240, 0.5);
+  --transition-speed: 0.3s;
+}
+
+/* ========================================
+   2. Global Accessibility Improvements
+   ======================================== */
+
+/* Skip to Main Content Link (Accessibility) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: #000;
+  padding: 8px 16px;
+  z-index: 10000;
+  font-weight: bold;
+  text-decoration: none;
+  transition: top var(--transition-speed) ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus Indicators - WCAG 2.1 Requirement */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Button focus states */
+.btn:focus-visible,
+.nav-link:focus-visible,
+a:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
+}
+
+/* Form element focus */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: var(--focus-ring);
+}
+
+/* ========================================
+   3. Reduced Motion for Accessibility
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   4. Typography & Readability
+   ======================================== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* Improved paragraph readability */
+p {
+  max-width: 75ch; /* Optimal line length for readability */
+}
+
+/* Heading hierarchy with clear visual weight */
+h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+h2 { font-size: 2rem; font-weight: 600; margin-bottom: 0.875rem; }
+h3 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.75rem; }
+h4 { font-size: 1.5rem; font-weight: 500; margin-bottom: 0.625rem; }
+h5 { font-size: 1.25rem; font-weight: 500; margin-bottom: 0.5rem; }
+h6 { font-size: 1rem; font-weight: 500; margin-bottom: 0.5rem; }
+
+/* ========================================
+   5. Interactive Element Enhancements
+   ======================================== */
+
+/* Buttons - Larger touch targets (min 44x44px per WCAG) */
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 1rem;
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
+}
+
+.btn-lg {
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Button hover states with clear feedback */
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Link styles with underline for accessibility */
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--transition-speed) ease;
+}
+
+/* ========================================
+   6. Navigation Enhancements
+   ======================================== */
+
+/* Navbar sticky with backdrop blur */
+.navbar {
+  transition: background-color var(--transition-speed) ease;
+}
+
+/* Nav link active state - clear visual indicator */
+.nav-link.active {
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+/* Dropdown menu accessibility */
+.dropdown-menu {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   7. Card & Container Styles
+   ======================================== */
+
+/* Card hover effects */
+.card {
+  transition: transform var(--transition-speed) ease, 
+              box-shadow var(--transition-speed) ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Glassmorphism effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   8. Form Accessibility
+   ======================================== */
+
+/* Form labels - always visible */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.375rem;
+}
+
+/* Input placeholder contrast */
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+/* Error states */
+.form-control.is-invalid {
+  border-color: var(--danger-color);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+.form-control.is-valid {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.25);
+}
+
+/* Required field indicator */
+.required::after {
+  content: ' *';
+  color: var(--danger-color);
+}
+
+/* ========================================
+   9. Loading & Feedback States
+   ======================================== */
+
+/* Spinner accessibility */
+.spinner-border {
+  animation: spinner-border 0.75s linear infinite;
+}
+
+@keyframes spinner-border {
+  to { transform: rotate(360deg); }
+}
+
+/* Success message animation */
+.success-message {
+  animation: successPop 0.5s ease;
+}
+
+@keyframes successPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Pulse animation for loading text */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ========================================
+   10. Responsive Breakpoints
+   ======================================== */
+
+/* Mobile-first responsive adjustments */
+@media (max-width: 576px) {
+  h1 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+  h2 { font-size: clamp(1.25rem, 4.5vw, 2rem); }
+  h3 { font-size: clamp(1rem, 3.5vw, 1.5rem); }
+  h5 { font-size: clamp(0.85rem, 3vw, 1.1rem); }
+  
+  p { font-size: clamp(0.9rem, 2.5vw, 1rem); }
+  
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem 1rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .card {
+    padding: 1rem !important;
+  }
+  
+  /* Touch-friendly form inputs */
+  .form-control,
+  .form-select {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-collapse {
+    background: rgba(15, 32, 39, 0.98);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  body {
+    font-size: 0.95rem;
+  }
+  
+  .lead {
+    font-size: 0.95rem;
+  }
+  
+  .display-5 {
+    font-size: 1.75rem;
+  }
+  
+  /* Better spacing for small screens */
+  .py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* ========================================
+   11. High Contrast Mode Support
+   ======================================== */
+@media (prefers-contrast: high) {
+  .btn {
+    border-width: 2px;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  .card {
+    border-width: 2px;
+  }
+}
+
+/* ========================================
+   12. Print Styles
+   ======================================== */
+@media print {
+  .navbar,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+  
+  .card {
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+}
+
+/* ========================================
+   13. Dark Theme Enhancements
+   ======================================== */
+
+/* Selection color */
+::selection {
+  background: var(--primary-color);
+  color: #000;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 202, 240, 0.5);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* ========================================
+   14. Animation Classes
+   ======================================== */
+
+/* Fade in animation */
+.animate__fadeIn {
+  animation: fadeInAnim 0.5s ease;
+}
+
+@keyframes fadeInAnim {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide up animation */
+.animate__slideUp {
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* ========================================
+   15. Utility Classes
+   ======================================== */
+
+/* Screen reader only - visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible only */
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Text contrast utility */
+.text-high-contrast {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Touch target size helper */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
