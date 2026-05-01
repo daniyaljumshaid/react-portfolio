@@ -56,8 +56,8 @@ export default function Resume() {
               {/* Download Button with States */}
               {!isDownloading && !downloaded && (
                 <a 
-                  href="/resume.pdf" 
-                  download
+                  href="/Resume.pdf" 
+                  download="Daniyal_Jumshaid_Resume.pdf"
                   className="btn btn-info btn-lg fw-bold px-5 py-3 text-dark"
                   onClick={handleDownload}
                   aria-label="Download resume as PDF"
