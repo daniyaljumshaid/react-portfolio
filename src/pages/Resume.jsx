@@ -4,15 +4,28 @@ export default function Resume() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
 
-  const handleDownload = () => {
+  const handleDownload = async (e) => {
+    e.preventDefault();
     setIsDownloading(true);
-    // Simulate download start
-    setTimeout(() => {
+    try {
+      const response = await fetch('/Resume.pdf');
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Daniyal_Jumshaid_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
       setIsDownloading(false);
       setDownloaded(true);
-      // Reset after 3 seconds
       setTimeout(() => setDownloaded(false), 3000);
-    }, 1000);
+    } catch (error) {
+      console.error('Download failed:', error);
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -55,15 +68,13 @@ export default function Resume() {
 
               {/* Download Button with States */}
               {!isDownloading && !downloaded && (
-                <a 
-                  href="/Resume.pdf" 
-                  download="Daniyal_Jumshaid_Resume.pdf"
-                  className="btn btn-info btn-lg fw-bold px-5 py-3 text-dark"
+                <button 
                   onClick={handleDownload}
+                  className="btn btn-info btn-lg fw-bold px-5 py-3 text-dark"
                   aria-label="Download resume as PDF"
                 >
                   <span role="img" aria-hidden="true">📥</span> Download Resume
-                </a>
+                </button>
               )}
 
               {isDownloading && (
