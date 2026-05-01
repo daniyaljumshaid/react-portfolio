@@ -8,16 +8,14 @@ export default function Resume() {
     e.preventDefault();
     setIsDownloading(true);
     try {
-      const response = await fetch('/Resume.pdf');
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+      // Direct download using window location
       const link = document.createElement('a');
-      link.href = url;
+      link.href = '/Resume.pdf';
       link.download = 'Daniyal_Jumshaid_Resume.pdf';
+      link.target = '_blank';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
       
       setIsDownloading(false);
       setDownloaded(true);
