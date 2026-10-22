@@ -18,8 +18,8 @@ export default function About() {
         <div className="col-lg-10">
           <header className="mb-5 text-center">
             <h2 className="display-5 fw-bold text-info">About Me</h2>
-            <p className="lead text-light opacity-75">
-              Passionate MERN Stack Developer building scalable web applications.
+            <p className="lead text-light opacity-75 mx-auto">
+                        Passionate MERN Stack Developer building scalable web applications.
             </p>
           </header>
 

@@ -8,14 +8,16 @@ export default function Resume() {
     e.preventDefault();
     setIsDownloading(true);
     try {
-      // Direct download using window location
+      const response = await fetch('/Daniyal%20Resume-2%20(1).pdf');
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = '/Resume.pdf';
-      link.download = 'Daniyal_Jumshaid_Resume.pdf';
-      link.target = '_blank';
+      link.href = url;
+      link.download = 'Daniyal Resume-2 (1).pdf';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
       
       setIsDownloading(false);
       setDownloaded(true);
@@ -33,7 +35,7 @@ export default function Resume() {
           {/* Header */}
           <header className="text-center mb-5">
             <h1 className="fw-bold text-info" style={{ fontSize: "clamp(1.75rem, 5vw, 3rem)" }}>My Resume</h1>
-            <p className="lead text-light opacity-75" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)" }}>
+            <p className="lead text-light opacity-75 mx-auto" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)" }}>
               Download my resume to explore my MERN stack skills and project experience
             </p>
           </header>

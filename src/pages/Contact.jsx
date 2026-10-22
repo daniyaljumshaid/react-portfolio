@@ -70,7 +70,7 @@ export default function Contact() {
       {/* Page Header */}
       <header className="text-center mb-4">
         <h1 className="fw-bold text-info" style={{ fontSize: "clamp(1.75rem, 5vw, 2.5rem)" }}>Contact</h1>
-        <p className="lead text-light opacity-75" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)" }}>
+        <p className="lead text-light opacity-75 mx-auto" style={{ fontSize: "clamp(0.95rem, 3vw, 1.1rem)" }}>
           Let's connect for MERN stack projects, internships, or collaboration opportunities
         </p>
       </header>

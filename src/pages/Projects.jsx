@@ -71,7 +71,7 @@ export default function Projects() {
       {/* Header */}
       <header className="text-center mb-5">
         <h1 className="fw-bold text-info">My Projects</h1>
-        <p className="lead text-light opacity-75">
+        <p className="lead text-light opacity-75 mx-auto">
           A collection of my academic and personal projects
         </p>
       </header>
